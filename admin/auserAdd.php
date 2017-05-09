@@ -13,7 +13,7 @@ if($aid){
     $sql="SELECT * FROM `admin` WHERE aid='{$aid}'";
     $auser=$db->query($sql)->fetch_assoc();
 }
-
+//注释
 //处理
 if($input->get('do')=='add'){
     $auser=$input->post('auser');
