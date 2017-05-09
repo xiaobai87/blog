@@ -8,6 +8,8 @@ $rows=array();
 while($row=$db_result->fetch_assoc()){
     $rows[]=$row;
 }
+////
+
 
 
 //删除
