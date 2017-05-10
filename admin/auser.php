@@ -8,14 +8,14 @@ $rows=array();
 while($row=$db_result->fetch_assoc()){
     $rows[]=$row;
 }
-////
+
 
 
 
 //删除
 if($input->get('do')=='del'){
     $aid=$input->get('aid');
-    if($aid==$session_aid){
+    if($aid==$session_aid || $aid==1){
         die ('不能删除自己');
     }
     $sql2="DELETE FROM `admin` WHERE aid={$aid}";

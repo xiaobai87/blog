@@ -3,7 +3,7 @@ header("Content-Type:text/html; charset=UTF-8");
 include("navIncHead.php");
 
 
-//接收auser页传过来的ID，默认赋值给value;没有则新建个空数组
+//接收auser页传过来的ID，默认赋值给value;没有则新建空数组
 $aid=$input->get('aid');
 $auser=[
     'auser'=>'',
@@ -35,10 +35,8 @@ if($input->get('do')=='add'){
     }
     $is=$db->query($sql);
     if($is){
-        echo "添加成功";
+        echo "操作成功";
         header("location:auser.php");
-    }else{
-        die ('操作成功');
     }
 }
 
