@@ -10,7 +10,7 @@ $auser=[
     'apass'=>'',
 ];
 if($aid){
-    $sql="SELECT * FROM `admin` WHERE aid='{$aid}'";
+    $sql="select * from `admin` where aid='{$aid}'";
     $auser=$db->query($sql)->fetch_assoc();
 }
 //注释
@@ -22,16 +22,16 @@ if($input->get('do')=='add'){
         die("用户名或者密码不能为空");
     }
     //检测用户名是否重复
-    $sql="SELECT * FROM `admin` WHERE auser='{$auser}' and aid<>'{$aid}'";
+    $sql="select * from `admin` where auser='{$auser}' and aid<>'{$aid}'";
     $is=$db->query($sql)->fetch_assoc();
     if($is){
         die( "用户名不能重复");
     }
     //判断添加修改
     if($aid<1){
-        $sql="INSERT INTO `admin` (`auser`, `apass`) VALUES ('{$auser}', '{$apass}')";
+        $sql="insert into `admin` (`auser`, `apass`) values ('{$auser}', '{$apass}')";
     }else{
-        $sql="UPDATE `admin` set auser='{$auser}', apass='{$apass}' where aid='{$aid}'";
+        $sql="update `admin` set auser='{$auser}', apass='{$apass}' where aid='{$aid}'";
     }
     $is=$db->query($sql);
     if($is){

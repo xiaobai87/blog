@@ -2,7 +2,7 @@
 header("Content-Type:text/html; charset=UTF-8");
 include("navIncHead.php");
 
-$sql="SELECT * FROM `admin`";
+$sql="select * from `admin`";
 $db_result=$db->query($sql);
 $rows=array();
 while($row=$db_result->fetch_assoc()){
@@ -18,8 +18,8 @@ if($input->get('do')=='del'){
     if($aid==$session_aid || $aid==1){
         die ('不能删除自己');
     }
-    $sql2="DELETE FROM `admin` WHERE aid={$aid}";
-    $db_del=$db->query($sql2);
+    $sql="delete from `admin` where aid={$aid}";
+    $db_del=$db->query($sql);
     if($db_del){
         header("location:auser.php");
     }else{
