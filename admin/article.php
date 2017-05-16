@@ -2,7 +2,21 @@
 header("Content-Type:text/html; charset=UTF-8");
 include("navIncHead.php");
 
-$sql="select * from `article` limit 0,10";
+$sql="select count(*) as total from article";
+$pageTotal=$db->query($sql)->fetch_assoc()['total'];
+$maxpage=ceil($pageTotal/10);
+
+
+
+$thispage=$input->get('page');
+$offsetpage=($thispage-1)*10;
+if($thispage>1){
+	$sql="select * from `article` limit {$offsetpage},10";
+}else{
+	$sql="select * from `article` limit 10,10";
+}
+
+
 $db_result=$db->query($sql);
 
 $rows=array();
@@ -48,7 +62,7 @@ if($input->get('do')=='del'){
 	<nav aria-label="Page navigation">
 	  <ul class="pagination">
 	  	<?php 
-		for($i=1;$i<=10;$i++){
+		for($i=1;$i<=$maxpage;$i++){
 			echo "<li><a href=\"article.php?page={$i}\">{$i}</a></li>";
 		}
 		?>
