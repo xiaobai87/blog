@@ -2,7 +2,7 @@
 header("Content-Type:text/html; charset=UTF-8");
 include("navIncHead.php");
 
-$sql="select * from `admin`";
+$sql="select * from `member`";
 $db_result=$db->query($sql);
 $rows=array();
 while($row=$db_result->fetch_assoc()){
@@ -14,14 +14,14 @@ while($row=$db_result->fetch_assoc()){
 
 //删除
 if($input->get('do')=='del'){
-    $aid=$input->get('aid');
-    if($aid==$session_aid || $aid==1){
+    $mid=$input->get('mid');
+    if($mid==$session_mid || $mid==1){
         die ('不能删除自己');
     }
-    $sql="delete from `admin` where aid={$aid}";
+    $sql="delete from `member` where mid={$mid}";
     $db_del=$db->query($sql);
     if($db_del){
-        header("location:auser.php");
+        header("location:muser.php");
     }else{
         die ('删除失败');
     }
@@ -38,9 +38,9 @@ if($input->get('do')=='del'){
         </tr>
         <?php foreach ($rows as $key):?>
         <tr>
-            <td><?php echo $key['aid'] ?></td>
-            <td><?php echo $key['auser'] ?></td>
-            <td><a href="auserAdd.php?do=change&aid=<?php echo $key['aid'] ?>">修改</a><a href="auser.php?do=del&aid=<?php echo $key['aid'] ?>">删除</a></td>
+            <td><?php echo $key['mid'] ?></td>
+            <td><?php echo $key['muser'] ?></td>
+            <td><a href="muserAdd.php?do=change&mid=<?php echo $key['mid'] ?>">修改</a><a href="muser.php?do=del&mid=<?php echo $key['mid'] ?>">删除</a></td>
         </tr>
         <?php endforeach;?>
     </table>

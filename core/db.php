@@ -15,7 +15,7 @@ header("Content-Type:text/html; charset=UTF-8");
 
 class db{
     function __construct(){
-        $this->db = new mysqli('192.168.111.90', 'root', '','blog');
+        $this->db = new mysqli('localhost', 'root', '','blog');
         if ($this->db->connect_error) {
             echo "连接失败: " . $this->db->connect_error;
             exit;

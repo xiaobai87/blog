@@ -1,11 +1,11 @@
 <?php
 session_start();
 include("../core/core.php");
-$session_aid=$input->session('aid');
-if(!$session_aid){
+$session_mid=$input->session('mid');
+if(!$session_mid){
     header("location:login.php");
 }
-$sql="SELECT * FROM `admin` WHERE aid='{$session_aid}'";
+$sql="SELECT * FROM `member` WHERE mid='{$session_mid}'";
 $row=$db->query($sql)->fetch_assoc();
 ?>
 </body>

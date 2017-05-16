@@ -4,60 +4,60 @@ include("navIncHead.php");
 
 
 //接收auser页传过来的ID，默认赋值给value;没有则新建空数组
-$aid=$input->get('aid');
-$auser=[
-    'auser'=>'',
-    'apass'=>'',
+$mid=$input->get('mid');
+$muser=[
+    'muser'=>'',
+    'mpass'=>'',
 ];
-if($aid){
-    $sql="select * from `admin` where aid='{$aid}'";
-    $auser=$db->query($sql)->fetch_assoc();
+if($mid){
+    $sql="select * from `member` where mid='{$mid}'";
+    $muser=$db->query($sql)->fetch_assoc();
 }
 //注释
 //处理
 if($input->get('do')=='add'){
-    $auser=$input->post('auser');
-    $apass=$input->post('apass');
-    if(empty($auser) || empty($apass)){
+    $muser=$input->post('muser');
+    $mpass=$input->post('mpass');
+    if(empty($muser) || empty($mpass)){
         die("用户名或者密码不能为空");
     }
     //检测用户名是否重复
-    $sql="select * from `admin` where auser='{$auser}' and aid<>'{$aid}'";
+    $sql="select * from `member` where muser='{$muser}' and mid<>'{$mid}'";
     $is=$db->query($sql)->fetch_assoc();
     if($is){
         die( "用户名不能重复");
     }
     //判断添加修改
-    if($aid<1){
-        $sql="insert into `admin` (`auser`, `apass`) values ('{$auser}', '{$apass}')";
+    if($mid<1){
+        $sql="insert into `member` (`muser`, `mpass`) values ('{$muser}', '{$mpass}')";
     }else{
-        $sql="update `admin` set auser='{$auser}', apass='{$apass}' where aid='{$aid}'";
+        $sql="update `member` set muser='{$muser}', mpass='{$mpass}' where mid='{$mid}'";
     }
     $is=$db->query($sql);
     if($is){
         echo "操作成功";
-        header("location:auser.php");
+        header("location:muser.php");
     }
 }
 
 ?>
 <div class="col-md-8 col-md-offset-2">
     <div class="page-header">
-    <h1>添加管理员 <small  class="pull-right"><a href="auser.php">返回</a></small></h1>
+    <h1>添加管理员 <small  class="pull-right"><a href="muser.php">返回</a></small></h1>
     </div>
-    <form class="form-horizontal" method="post" action="auserAdd.php?do=add&aid=<?php echo $aid; ?>">
+    <form class="form-horizontal" method="post" action="muserAdd.php?do=add&mid=<?php echo $mid; ?>">
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" name="auser" id="auser" placeholder="请输入用户名"
-            value="<?php echo $auser['auser'] ?>">
+            <input type="text" class="form-control" name="muser" id="muser" placeholder="请输入用户名"
+            value="<?php echo $muser['muser'] ?>">
             </div>
         </div>
         <div class="form-group">
             <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
             <div class="col-sm-10">
-            <input type="password" class="form-control" name="apass" id="apass" 
-            placeholder="请输入密码" value="<?php echo $auser['apass'] ?>">
+            <input type="password" class="form-control" name="mpass" id="mpass" 
+            placeholder="请输入密码" value="<?php echo $muser['mpass'] ?>">
             </div>
         </div>
         <div class="form-group">
