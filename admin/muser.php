@@ -30,7 +30,7 @@ if($input->get('do')=='del'){
 ?>
 <div class="col-md-8 col-md-offset-2">
     <div class="page-header">
-    <h1>管理员管理 <small  class="pull-right"><a href="auserAdd.php">添加管理员</a></small></h1>
+    <h1>管理员管理 <small  class="pull-right"><a href="muserAdd.php">添加管理员</a></small></h1>
     </div>
     <table class="table table-striped">
         <tr>

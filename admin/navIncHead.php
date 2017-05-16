@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="#">系统设置 </a></li>
-        <li><a href="#">博客管理</a></li>
+        <li><a href="article.php">博客管理</a></li>
         <li><a href="muser.php">管理员管理</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

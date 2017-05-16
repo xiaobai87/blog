@@ -10,20 +10,21 @@ DELETE FROM `msg` WHERE id=13
 SELECT * FROM `msg` WHERE id>10 ORDER BY id DESC
 */
 header("Content-Type:text/html; charset=UTF-8");
-
+date_default_timezone_set('Asia/Shanghai');
 // 设置编码，防止中文乱码
 
 class db{
     function __construct(){
-        $this->db = new mysqli('localhost', 'root', '','blog');
-        if ($this->db->connect_error) {
+        $this->mysqli = new mysqli('localhost', 'root', '','blog');
+        if ($this->mysqli->connect_error) {
             echo "连接失败: " . $this->db->connect_error;
             exit;
         }
+		$this->query("SET NAMES UTF8");
     }
     function query($key){
-        return $this->db->query($key);
-        $this->db->query("SET NAMES UTF8");
+        return $this->mysqli->query($key);
+        
     }
 }
 ?>
