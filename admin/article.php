@@ -8,13 +8,13 @@ $maxpage=ceil($pageTotal/10);
 
 
 
-$thispage=$input->get('page');
-$offsetpage=($thispage-1)*10;
-if($thispage>1){
-	$sql="select * from `article` limit {$offsetpage},10";
-}else{
-	$sql="select * from `article` limit 10,10";
-}
+$page=$input->get('page');
+$page=$page<1?1:$page;
+$offsetpage=($page-1)*10;
+
+
+
+$sql="select * from `article` limit {$offsetpage},10";
 
 
 $db_result=$db->query($sql);

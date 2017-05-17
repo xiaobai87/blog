@@ -46,6 +46,13 @@ if($input->get('do')=='add'){
 }
 
 ?>
+<link rel="stylesheet" type="text/css" href="../dist/simditor/styles/simditor.css" />
+
+<script type="text/javascript" src="../dist/simditor/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/simditor/scripts/module.js"></script>
+<script type="text/javascript" src="../dist/simditor/scripts/hotkeys.js"></script>
+<script type="text/javascript" src="../dist/simditor/scripts/uploader.js"></script>
+<script type="text/javascript" src="../dist/simditor/scripts/simditor.js"></script>
 <div class="col-md-8 col-md-offset-2">
     <div class="page-header">
     <h1>添加文章 <small  class="pull-right"><a href="article.php">返回</a></small></h1>
@@ -68,7 +75,7 @@ if($input->get('do')=='add'){
         <div class="form-group">
             <label for="inputPassword3" class="col-sm-2 control-label">正文</label>
             <div class="col-sm-10">
-            <textarea class="form-control" name="pcontent" id="pcontent" 
+            <textarea class="form-control" name="pcontent" id="editor" 
             placeholder="请输入正文"><?php echo $puser['pcontent'] ?></textarea>
             </div>
         </div>
@@ -79,5 +86,11 @@ if($input->get('do')=='add'){
         </div>
     </form>
 </div>
+
+<script>
+var editor = new Simditor({
+  textarea: $('#editor')
+});
+</script>
 
 
