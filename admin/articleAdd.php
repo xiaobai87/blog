@@ -88,9 +88,15 @@ if($input->get('do')=='add'){
 </div>
 
 <script>
-var editor = new Simditor({
-  textarea: $('#editor')
-});
+   $(function(){ 
+    var editor = new Simditor( {  
+        textarea : $('#editor'),  
+        upload : {  
+            url : 'articleUpload.php', 
+            fileKey: 'articlefile',
+        }   
+    });  
+   })  
 </script>
 
 
