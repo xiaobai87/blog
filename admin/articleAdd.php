@@ -90,10 +90,12 @@ if($input->get('do')=='add'){
 <script>
    $(function(){ 
     var editor = new Simditor( {  
-        textarea : $('#editor'),  
+        textarea : $('#editor'),
+		defaultImage : '../upfiles/image.jpg', 		
         upload : {  
             url : 'articleUpload.php', 
             fileKey: 'articlefile',
+			leaveConfirm: '正在上传文件'
         }   
     });  
    })  

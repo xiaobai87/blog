@@ -2,19 +2,23 @@
 header("Content-Type:text/html; charset=UTF-8");
 include("navIncHead.php");
 
+
+
+
+$pagenum=$rows['page'];
 $sql="select count(*) as total from article";
 $pageTotal=$db->query($sql)->fetch_assoc()['total'];
-$maxpage=ceil($pageTotal/10);
+$maxpage=ceil($pageTotal/$pagenum);
 
 
 
 $page=$input->get('page');
 $page=$page<1?1:$page;
-$offsetpage=($page-1)*10;
+$offsetpage=($page-1)*$pagenum;
 
 
 
-$sql="select * from `article` limit {$offsetpage},10";
+$sql="select * from `article` limit {$offsetpage},{$pagenum}";
 
 
 $db_result=$db->query($sql);

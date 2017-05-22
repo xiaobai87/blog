@@ -17,7 +17,7 @@ class db{
     function __construct(){
         $this->mysqli = new mysqli('localhost', 'root', '','blog');
         if ($this->mysqli->connect_error) {
-            echo "连接失败: " . $this->db->connect_error;
+            echo "连接失败: " . $this->mysqli->connect_error;
             exit;
         }
 		$this->query("SET NAMES UTF8");
