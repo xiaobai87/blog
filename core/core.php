@@ -11,6 +11,6 @@ $db=new db();
 	$res=$db->query($sql);
 	$rows=array();
 	while($row=$res->fetch_assoc()){
-		$rows[$row['key']]=$row['value'];
+		$rows[$row['item']]=$row['value'];
 	}
 ?>

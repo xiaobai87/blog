@@ -4,7 +4,7 @@ class Input{
     function post($key){
         if(isset($_POST[$key])){
             $val=$_POST[$key];
-            return $val;
+			return $val;
         }
     }
     function get($key){
