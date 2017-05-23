@@ -3,16 +3,11 @@ header("Content-Type:text/html; charset=UTF-8");
 
 include("/core/core.php");
 
+$reads=$input->get('pid');
+$sql="select * from `article` WHERE pid='{$reads}'";
+$readss=$db->query($sql)->fetch_assoc();
 
-$sql="select * from `article` ORDER BY pid DESC limit 0,10";
 
-
-$db_result=$db->query($sql);
-
-$blogs=array();
-while($row=$db_result->fetch_assoc()){
-    $blogs[]=$row;
-}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +30,7 @@ while($row=$db_result->fetch_assoc()){
 			<div class="jumbotron">
 			  <h1><?php echo $rows['title'] ?></h1>
 			  <p><?php echo $rows['info'] ?></p>
-			  <p><a class="btn btn-primary btn-lg" href="/" role="button">首页</a></p>
+			  <p><a class="btn btn-primary btn-lg" href="/blog" role="button">首页</a></p>
 			</div>
 		</div>
 	</div>
@@ -43,14 +38,12 @@ while($row=$db_result->fetch_assoc()){
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
-			<?php foreach ($blogs as $key) :?>
 			<div class="panel panel-default">
-			  <div class="panel-heading"><a href="read.php?pid=<?php echo $key['pid'] ?>"><?php echo $key['ptit'] ?></a></div>
+			  <div class="panel-heading"><a href="read.php?pid=<?php echo $readss['pid'] ?>"><?php echo $readss['ptit'] ?></a></div>
 			  <div class="panel-body">
-				<?php echo mb_substr(strip_tags($key['pcontent']),0,100,'utf-8') ?>...
+				<?php echo $readss['pcontent'] ?>
 			  </div>
 			</div>
-			<?php endforeach ?>
 		</div>
 		
 		<div class="col-md-4">

@@ -37,7 +37,6 @@ if($input->get('do')=='add'){
     }else{
         $sql="update article set ptit='{$ptit}', pauthor='{$pauthor}' , pcontent='{$pcontent}',puptime='{$pintime}' where pid='{$pid}'";
     }
-	echo $sql;
     $is=$db->query($sql);
     if($is){
         echo "操作成功";
